@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Import the Controller
-
+// Import room controller
 const {
   getAllRooms,
   createRoom,
@@ -11,12 +10,19 @@ const {
   deleteRoom,
 } = require('../controllers/roomControllers');
 
+// Import auth routes
+const authRoutes = require('./authRoutes');
 
-// Routes
+
+// Room Routes
 router.get('/rooms', getAllRooms);
 router.post('/rooms', createRoom);
 router.get('/rooms/:id', getRoomById);
 router.put('/rooms/:id', updateRoom);
 router.delete('/rooms/:id', deleteRoom);
+
+
+// Auth Routes
+router.use('/auth', authRoutes);
 
 module.exports = router;
