@@ -25,3 +25,15 @@ Since maintenance logs are small and room-based, it is better to store them insi
 **Why did I choose to Reference the Guest in Booking?**
 Rooms and guests are separate records in the system. They can exist on their own even without a booking, and each can be linked to many bookings over time. Using references instead of copying their details prevents duplicate data and helps keep the information accurate and consistent throughout the system.
 
+1. Authentication vs Authorization:
+o What is the difference between Authentication and Authorization in our
+code?
+o Answer: Authentication means confirming the identity of a user such as when the system checks their email and password during login. Authorization on the other hand means checking what actions that user is allowed to perform, like verifying if they have an admin role before allowing them to delete a room.
+2. Security (bcrypt):
+o Why did we use bcryptjs instead of saving passwords as plain text in
+MongoDB?
+o Answer: Using bcryptjs instead of saving passwords as plain text in MongoDB to keep user accounts more secure. It converts passwords into hashed values, so even if the database is hacked, attackers cannot easily see or use the real passwords.
+3. JWT Structure:
+o What does the protect middleware do when it receives a JWT from the
+client?
+o Answer: It gets the token from the request header (Authorization: Bearer token). Then it checks if the token is valid using the JWT_SECRET. After that, it reads the user ID from the token and attaches it to req.user so the system knows who is making the request.
